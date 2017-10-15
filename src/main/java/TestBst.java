@@ -1,3 +1,5 @@
+import trees.BST;
+
 public class TestBst {
 
     public static void main(String[] args) {

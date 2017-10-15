@@ -1,3 +1,5 @@
+package stringManipulation;
+
 public class StringCompression {
     public static void main(String[] args) {
         String testInput = "aaaabbbbbccccc";

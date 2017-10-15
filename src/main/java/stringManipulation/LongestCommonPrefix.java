@@ -1,3 +1,5 @@
+package stringManipulation;
+
 public class LongestCommonPrefix {
     public static void main(String[] args) {
         String[] testInput = {"leetCode","lee","leetest","leemest"};

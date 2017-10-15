@@ -1,3 +1,5 @@
+package stringManipulation;
+
 import java.util.HashMap;
 
 public class CharAndNumberOfRepetations {

@@ -1,3 +1,5 @@
+package algos;
+
 import com.sun.javaws.exceptions.InvalidArgumentException;
 
 /**
