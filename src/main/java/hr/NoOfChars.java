@@ -11,10 +11,12 @@ public class NoOfChars {
         int[] c = new int[256];
         for(int i=0;i<s.length();i++){
             c[s.charAt(i)]++;
+            //System.out.println(c[s.charAt(i)]);
         }
         for(int i = 0; i<s.length();i++){
-            if(c[i]>0)
-                System.out.println((char)i+""+c[i]);
+            if(c[i]>=0) {
+                System.out.println((char)i+ "" +c[i]);
+            }
         }
     }
 }
