@@ -18,6 +18,7 @@ public class List1 {
        }else{
            Node n = new Node(value);
            n.next = null;
+           n.next = head;
            head.next = n;
        }
    }
