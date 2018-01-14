@@ -11,15 +11,17 @@ public class List1 {
        }
    }
 
+   //head->1->null
+    //2 adding new node
+    //head->2->1->null
    public void add(int value){
        if(head == null){
            head = new Node(value);
            head.next = null;
        }else{
            Node n = new Node(value);
-           n.next = null;
            n.next = head;
-           head.next = n;
+           head = n;
        }
    }
    public void printList(){
