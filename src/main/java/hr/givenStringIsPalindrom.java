@@ -1,6 +1,5 @@
 package hr;
 
-import com.sun.deploy.util.StringUtils;
 
 public class givenStringIsPalindrom {
     public static void main(String[] args) {
