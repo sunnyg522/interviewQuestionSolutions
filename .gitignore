@@ -106,3 +106,8 @@ crashlytics-build.properties
 fabric.properties
 
 /q.iml
+/target/
+.idea/inspectionProfiles/
+src/main/java/coursera/week2/
+src/test/java/coursera/week2/
+target/
