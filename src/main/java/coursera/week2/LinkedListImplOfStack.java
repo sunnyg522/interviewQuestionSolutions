@@ -6,7 +6,7 @@ public class LinkedListImplOfStack<T> implements Iterable<T> {
     private Node first = null;
 
     public Iterator<T> iterator() {
-        return null;
+        return new stackItrator();
     }
 
     private class stackItrator implements Iterator<T>{
@@ -14,7 +14,7 @@ public class LinkedListImplOfStack<T> implements Iterable<T> {
         private Node current = first;
 
         public boolean hasNext() {
-            return current.next != null;
+            return current != null;
         }
 
         public T next() {
