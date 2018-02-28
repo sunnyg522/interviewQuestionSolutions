@@ -1,7 +1,33 @@
 package coursera.week2;
 
-public class LinkedListImplOfStack<T> {
+import java.util.Iterator;
+
+public class LinkedListImplOfStack<T> implements Iterable<T> {
     private Node first = null;
+
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+    private class stackItrator implements Iterator<T>{
+
+        private Node current = first;
+
+        public boolean hasNext() {
+            return current.next != null;
+        }
+
+        public T next() {
+            T t = current.value;
+            current = current.next;
+            return t;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException("this operation is not supported");
+        }
+    }
+
     private class Node{
         T value;
         Node next;
