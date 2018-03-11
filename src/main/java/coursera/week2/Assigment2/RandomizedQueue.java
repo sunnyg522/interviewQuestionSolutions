@@ -5,7 +5,6 @@ import edu.princeton.cs.algs4.StdRandom;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
@@ -28,6 +27,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public Item dequeue() {
+        if(size()== 0)
+            throw new NullPointerException("empty random queue");
         int index = getRandomIndex();
         Item item = list.get(index);
         list.remove(index);
@@ -43,24 +44,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public Iterator<Item> iterator() {
-        return new RandomizedQueueIterator();
-    }
-
-    private class RandomizedQueueIterator implements Iterator<Item> {
-
-        public boolean hasNext() {
-            return size() > 0;
-        }
-
-        public Item next() {
-            if (isEmpty())
-                throw new NoSuchElementException("No element found ");
-            return dequeue();
-        }
-
-        public void remove() {
-            throw new UnsupportedOperationException("this operation is not supported");
-        }
+        return list.listIterator();
     }
 
     public static void main(String[] args) {
