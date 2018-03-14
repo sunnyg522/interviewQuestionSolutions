@@ -1,5 +1,6 @@
 package coursera.week2.Assigment2;
 
+import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
-    private List<Item> list;
+    private final List<Item> list;
 
     public RandomizedQueue() {
         list = new ArrayList<Item>();
@@ -27,7 +28,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public Item dequeue() {
-        if(size()== 0)
+        if (size() == 0)
             throw new NullPointerException("empty random queue");
         int index = getRandomIndex();
         Item item = list.get(index);
@@ -48,6 +49,15 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
+        RandomizedQueue<String> rq = new RandomizedQueue<String>();
+        rq.enqueue("test1");
+        rq.enqueue("test2");
+        rq.enqueue("test3");
+        rq.enqueue("test4");
+        rq.enqueue("test5");
 
-    }
+        for (String s: rq){
+            StdOut.print(s);
+        }
+    } // this method is not rep
 }
