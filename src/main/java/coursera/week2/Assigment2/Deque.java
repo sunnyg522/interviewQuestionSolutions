@@ -22,7 +22,7 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     public boolean isEmpty() {
-        return first == last;
+        return size == 0;
     }
 
     public int size() {
