@@ -127,7 +127,20 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
     public int height(Node x){
         if(x == null) return 0;
-        return Math.max(height(x.right),height(x.left)+1);
+        return Math.max(height(x.right),height(x.left))+1;
+    }
+
+    public boolean isBalTree = false;
+    public  void isBalanceTree(Node x){
+        if(x == null)
+            return;
+        if(height(x.left)- height(x.right) >1){
+            isBalTree = true;
+            return;
+        }
+        isBalanceTree(x.right);
+        isBalanceTree(x.left);
+
     }
 
     public void print(){
@@ -215,9 +228,22 @@ public class BST<Key extends Comparable<Key>, Value> {
         sumOfLeaves(root);
          return totalSum;
     }
+
+    public int sumOfLeavesConSolidatedReturn(){
+        sumOfLeaves(root);
+        return totalSum;
+    }
     int totalSum = 0;
 
     public void sumOfLeaves(Node x){
+        if(x == null) return ;
+        if(x.right == null & x.left == null)
+            this.totalSum = totalSum + (Integer) x.value;
+        sumOfLeaves(x.left);
+        sumOfLeaves(x.right);
+    }
+
+    public void sumOfLeavesConSolidatedReturn(Node x){
         if(x == null) return ;
         if(x.right == null & x.left == null)
             this.totalSum = totalSum + (Integer) x.value;
@@ -244,5 +270,119 @@ public class BST<Key extends Comparable<Key>, Value> {
         print(x.left);
         System.out.println(x.sum);
         print(x.right);
+    }
+
+    public void TreeTilt(){
+        TreeTilt(root);
+    }
+
+    int tiltSum = 0;
+    public void TreeTilt(Node x){
+        if(x == null)
+            return;
+        TreeTilt(x.left);
+        int left = x.left == null? 0 : (Integer)x.left.value;
+        int right = x.right == null ? 0 : (Integer)x.right.value;
+        int diff = left - right;
+        tiltSum = tiltSum+Math.abs(diff);
+        System.out.println("Tilt of node : " + x.value +" is "+Math.abs(diff));
+        TreeTilt(x.right);
+    }
+
+    boolean isPathSum = false;
+    int tempSum = 0;
+    public boolean pathSum(int totalSum){
+        pathSum(root, totalSum);
+        return isPathSum;
+    }
+    public boolean pathSum(Node x, int sum){
+        if(x== null )
+            return(sum == 0);
+        else {
+            boolean ans = false;
+            int subSum = totalSum -(Integer) x.value;
+            if(subSum == 0 && x.left == null && x.right == null)
+                return true;
+            if(x.left == null)
+                ans = ans || pathSum(x.left,subSum);
+            if(x.right == null)
+                ans = ans || pathSum(x.right, subSum);
+            return ans;
+        }
+    }
+
+
+    public boolean isFUllBST(){
+        return isFUllBST(root);
+    }
+
+    public boolean isFUllBST(Node x){
+        if(x==null)
+            return true;
+        if(x.right == null && x.left == null)
+            return true;
+        if(x.right!=null && x.left !=null)
+            return isFUllBST(x.right) && isFUllBST(x.left);
+        return false;
+    }
+
+    public void printRootToLeaf(){
+        int path[] = new int[1000];
+        printRootToLeaf(root, path, 0);
+    }
+    public void printRootToLeaf(Node x, int path[], int pathLen){
+        if(x == null)
+            return;
+        path[pathLen] = (Integer) x.value;
+        pathLen++;
+        if(x.left == null && x.right == null){
+            printArray(path, pathLen);
+        }
+        printRootToLeaf(x.left, path, pathLen);
+        printRootToLeaf(x.right,path, pathLen);
+
+    }
+    public void printArray(int[] arr, int pathLen){
+        for (int i=0;i<pathLen;i++){
+            System.out.print(arr[i]);
+        }
+        System.out.println();
+    }
+
+    public int closestValueInBinaryTree(int input){
+          closestValueInBinaryTree(root, input, Integer.MAX_VALUE);
+          return closeValue;
+    }
+    public int closeValue;
+    public void closestValueInBinaryTree(Node x, int input, int newDiff){
+        if(x==null)
+            return;
+        int diffOfNum = Math.abs((Integer)x.value - input);
+        if(diffOfNum<newDiff) {
+            newDiff = diffOfNum;
+            closeValue = (Integer)x.value;
+        }
+        closestValueInBinaryTree(x.left, input, newDiff);
+        closestValueInBinaryTree(x.right, input, newDiff);
+
+    }
+    public void addOneNodeToTree(Node x, int depth, Key key, Value value){
+        if (x==null)
+            return;
+        if(height(x) == depth){
+            Node tempLeft = x.left;
+            Node tempRiht = x.right;
+            x.value = value;
+            Node left = new Node(key, value, 1);
+            Node right =  new Node(key, value, 1);
+            left.left = tempLeft;
+            right.right = tempRiht;
+        }else if (depth == 1){
+            Node n = new Node(key, value, 1);
+            n.left = x;
+        }
+        addOneNodeToTree(x.left, depth, key, value);
+        addOneNodeToTree(x.right, depth,key,value);
+
     }
 }

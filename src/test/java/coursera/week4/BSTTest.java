@@ -54,7 +54,7 @@ public class BSTTest {
         System.out.println("++++++++");
         System.out.println(bst.isEmpty());
         System.out.println("++++++++");
-        System.out.println(bst.height());
+        System.out.println("height"+bst.height());
         System.out.println("bfs");
         bst.bfs();
         bst.widthOfTree();
@@ -66,6 +66,25 @@ public class BSTTest {
         System.out.println(bst.sumOfLeftANDRight());
         System.out.println("++++++++");
         bst.printSum();
+        System.out.println("is full bst  :   "+bst.isFUllBST());
+
+        System.out.println("++++++++ Tree tilt");
+        bst.TreeTilt();
+        System.out.println(bst.tiltSum);
+
+        System.out.println("path sum");
+        System.out.println(bst.pathSum(11));
+
+        System.out.println(" is balance tree");
+        bst.isBalanceTree(bst.root);
+        System.out.println(bst.isBalTree);
+        System.out.println("print root to path");
+        bst.printRootToLeaf();
+        System.out.println("Closest Value");
+        System.out.println(bst.closestValueInBinaryTree(0));
+        System.out.println("Add one Node to Tree");
+        bst.addOneNodeToTree(bst.root,1,2,2);
+        bst.print();
 
     }
 }

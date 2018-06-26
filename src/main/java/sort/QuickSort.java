@@ -38,6 +38,8 @@ public class QuickSort {
         a[j]=temp;
     }
 
+
+
     public static void main(String[] args) {
         int[] testInput = {20,4,8,3,5,2,11,10,};
         System.out.println(Arrays.toString(testInput));
