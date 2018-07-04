@@ -15,8 +15,8 @@ public class RodCutting {
     public static void main(String[] args) {
         int arr[] = new int[] {1, 5, 8, 9, 10, 17, 17, 20};
         int size = arr.length;
-        System.out.println("Maximum Obtainable Value is " +
-                cutRod(arr, size));
+//        System.out.println("Maximum Obtainable Value is " +
+//                cutRod(arr, size));
         System.out.println("Maximum Obtainable Value is " +
                 cutRodRecursion(arr, size));
     }
