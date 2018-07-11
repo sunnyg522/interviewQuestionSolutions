@@ -27,4 +27,5 @@ public class TotalSumFromGivenNumbers {
             return state[n];
         return state[n] =  totalSum(n-1)+totalSum(n-3)+totalSum(n-5);
     }
+
 }
