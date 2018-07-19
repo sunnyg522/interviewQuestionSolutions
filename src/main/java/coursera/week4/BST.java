@@ -383,6 +383,32 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
         addOneNodeToTree(x.left, depth, key, value);
         addOneNodeToTree(x.right, depth,key,value);
+    }
+    /**
+     * Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+     * For example, this binary tree is symmetric:
+     *     1
+          / \
+         2   2
+        / \ / \
+       3  4 4  3
+     * But the following is not:
+            1
+           / \
+          2   2
+          \   \
+          3    3
+     * Note:
+     * Bonus points if you could solve it both recursively and iteratively.
+     */
+    public boolean isTreeSymentric(Node left, Node right){
+        if (left == null && right == null)
+            return true;
+        if(left==null || right == null)
+            return false;
+        if(left.value != right.value)
+            return false;
+        return isTreeSymentric(left.left, right.right) && isTreeSymentric(left.right,right.left);
 
     }
 }
