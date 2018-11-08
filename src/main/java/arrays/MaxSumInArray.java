@@ -15,7 +15,6 @@ public class MaxSumInArray {
         for (int i=0;i<in.length;i++){
             newsum = Math.max(newsum+in[i], in[i]);
             maxsum = Math.max(maxsum,newsum);
-
         }
         return maxsum;
     }

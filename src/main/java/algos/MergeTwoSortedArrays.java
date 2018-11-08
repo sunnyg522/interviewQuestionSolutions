@@ -1,5 +1,6 @@
 package algos;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -14,7 +15,7 @@ public class MergeTwoSortedArrays {
         int arr1[] = { 1, 3, 4, 5};
         int arr2[] = {2, 4, 6, 8};
         System.out.println(Arrays.toString(merge(arr1,arr2)));
-
+        System.out.println(Arrays.toString(mergerTwoSortedArrays(arr1,arr2)));
     }
 
     public static int[] merge(int[]  a, int[] b){
@@ -45,5 +46,24 @@ public class MergeTwoSortedArrays {
             p++;
         }
         return aux;
+    }
+
+    public static int[] mergerTwoSortedArrays(int[] a, int[] b){
+        int i=0, j=0,k=0;
+        int[] c = new int[a.length+b.length];
+        while (i<a.length && j<b.length){
+            if(a[i]<b[j]) {
+                c[k++] = a[i++];
+            }else
+                c[k++] = b[j++];
+        }
+        while (i<a.length)
+        {
+            c[k++] = a[i++];
+        }
+        while (j<b.length){
+            c[k++] = b[j++];
+        }
+        return c;
     }
 }

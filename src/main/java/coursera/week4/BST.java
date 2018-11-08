@@ -392,6 +392,7 @@ public class BST<Key extends Comparable<Key>, Value> {
          2   2
         / \ / \
        3  4 4  3
+
      * But the following is not:
             1
            / \
