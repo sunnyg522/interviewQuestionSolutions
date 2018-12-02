@@ -4,11 +4,11 @@ package linkedlist;
  * Created by dgunda on 9/21/17.
  */
 public class List {
-    public Node head;
-    class Node{
-        private int data;
-        private Node next;
-        private boolean isVisisted = false;
+    public static Node head;
+    public class Node{
+        public int data;
+        public Node next;
+        public boolean isVisisted = false;
 
     }
     public void addNode(int data){
