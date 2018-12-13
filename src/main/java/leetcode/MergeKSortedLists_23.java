@@ -3,6 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * @project q
@@ -19,6 +20,7 @@ public class MergeKSortedLists_23 {
         lists.add(l2);
         lists.add(l3);
         System.out.println(mergeKSortedList(lists));
+        System.out.println(mergeKLists(lists));
     }
     public static List<Integer> merge2Lists( List<Integer> a, List<Integer> b){
         int i=0,j=0;
@@ -49,6 +51,19 @@ public class MergeKSortedLists_23 {
             return merge2Lists(mergeKSortedList(inputList, left, mid), mergeKSortedList(inputList, mid+1,right));
         }
         return inputList.get(left);
-
+    }
+    public static List<Integer> mergeKLists(List<List<Integer>> lists) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for(int i=0;i<lists.size();i++){
+            List<Integer> list = lists.get(i);
+            for (int j=0;j<list.size();j++){
+                pq.add(list.get(j));
+            }
+        }
+        List<Integer> list = new ArrayList<>();
+        for(int i: pq){
+            list.add(i);
+        }
+        return list;
     }
 }

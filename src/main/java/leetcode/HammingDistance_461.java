@@ -12,6 +12,7 @@ public class HammingDistance_461 {
         String b1 = String.format("%16s", Integer.toBinaryString(b));
         System.out.println(getHammingDistance(a1, b1));
         System.out.println(getHammingDistance2(a,b));
+        System.out.println(getHammingDistance2Opt(a,b));
     }
     public static int getHammingDistance(String a, String  b){
         int count = 0;
@@ -23,6 +24,16 @@ public class HammingDistance_461 {
     }
     public static int getHammingDistance2(int a, int b){
         int temp = a^b;
+        int count = 0;
+        while (temp!=0){
+            if((temp&1) == 1)
+                count++;
+            temp = temp>>1;
+        }
+        return count;
+    }
+    public static int getHammingDistance2Opt(int x, int y){
+        int temp =  x^y;
         int count = 0;
         while (temp!=0){
             if((temp&1) == 1)
