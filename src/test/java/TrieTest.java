@@ -14,6 +14,6 @@ public class TrieTest {
         trie.insert("apple");
         System.out.println(trie.search("tesla"));
         System.out.println(trie.startsWith("appp"));
-        System.out.println(trie.startsWith(null));
+        //System.out.println(trie.startsWith(null));
     }
 }

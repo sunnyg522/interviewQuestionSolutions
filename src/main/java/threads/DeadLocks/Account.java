@@ -1,0 +1,28 @@
+package threads.DeadLocks;
+
+/**
+ * @project q
+ * @authore dgunda on 1/13/19
+ */
+public class Account {
+    private int balance=10000;
+
+    public void deposit(int amount){
+        balance +=amount;
+    }
+
+    public void withDraw(int amount){
+        balance -=amount;
+    }
+
+    public int balance(){
+        return balance;
+    }
+
+    public static void transfer(Account acc1, Account acc2, int amount){
+        acc1.withDraw(amount);
+        acc2.deposit(amount);
+    }
+
+
+}
