@@ -3,6 +3,7 @@ package coursera.week4;
 import coursera.week2.Assigment2.Deque;
 import edu.princeton.cs.algs4.Queue;
 
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
 /**
@@ -412,4 +413,77 @@ public class BST<Key extends Comparable<Key>, Value> {
         return isTreeSymentric(left.left, right.right) && isTreeSymentric(left.right,right.left);
 
     }
+    class TreeNode{
+        String value;
+        TreeNode left;
+        TreeNode right;
+        public  TreeNode(String val){
+            this.value = val;
+            this.right = null;
+            this.left = null;
+        }
+    }
+
+    public String serialize(Node root){
+        if(root == null){
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        java.util.Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()){
+            Node n = q.poll();
+            if(n!=null){
+                sb.append(String.valueOf(n.value)+",");
+                q.add(n.left);
+                q.add(n.right);
+            }else {
+                sb.append("#,");
+            }
+        }
+        sb.deleteCharAt(sb.length()-1);
+        System.out.println(sb.toString());
+        return sb.toString();
+    }
+
+
+    public TreeNode deserialize(String s){
+        String[] t = s.split(",");
+        java.util.Queue<TreeNode> q = new LinkedList<>();
+        TreeNode root = new TreeNode(t[0]);
+        q.add(root);
+        int i =1;
+        while (!q.isEmpty()){
+            TreeNode aux = q.poll();
+            if(aux == null){
+                continue;
+            }
+            if(!t[i].equals("#")){
+                aux.left = new TreeNode(t[i]);
+                q.offer(aux.left);
+            }else {
+                aux.left = null;
+                q.offer(null);
+            }
+            i++;
+            if(!t[i].equals("#")){
+                aux.right = new TreeNode(t[i]);
+                q.offer(aux.right);
+            }else {
+                aux.right = null;
+                q.offer(null);
+            }
+            i++;
+        }
+        return root;
+    }
+
+    public void print(TreeNode t){
+        if(t == null)
+            return;
+        print(t.left);
+        System.out.println(t.value);
+        print(t.right);
+    }
+
 }

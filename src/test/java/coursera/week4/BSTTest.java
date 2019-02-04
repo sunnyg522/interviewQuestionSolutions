@@ -45,6 +45,8 @@ public class BSTTest {
 
 
         bst.print();
+        bst.serialize(bst.root);
+        bst.print(bst.deserialize("5,1,7,#,3,6,8,2,4,#,#,#,9,#,#,#,#,#,10,#,#"));
         System.out.println("++++++++");
         System.out.println(bst.ceil(6));
         System.out.println("++++++++");
