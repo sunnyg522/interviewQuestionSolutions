@@ -33,7 +33,6 @@ public class ReverseStringII {
 
     public static void main(String[] args) {
         String s = "the sky is blue";
-        ;
         System.out.println(reverseWord(s.toCharArray()));
     }
 }
