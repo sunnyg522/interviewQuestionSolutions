@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Comparator;
  */
 public class LargestNumber_179 {
     public static void main(String[] args) {
-        System.out.printf(largestNumber(new int[]{0,0}));
+        //System.out.printf(largestNumber(new int[]{0,0}));
     }
     public static String largestNumber(int[] nums) {
         String str[] = new String[nums.length];
