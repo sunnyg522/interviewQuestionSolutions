@@ -6,7 +6,7 @@ package leetcode;
  */
 public class CountAndSay_38 {
     public static void main(String[] args) {
-        System.out.println(countAndSay(3));
+        System.out.println(countAndSay(4));
     }
     public static String countAndSay(int n) {
         if(n<=0)
@@ -16,8 +16,8 @@ public class CountAndSay_38 {
         while (i<n){
             StringBuilder sb = new StringBuilder();
             int count=1;
-            for(int j=0;j<result.length();j++){
-                if(result.charAt(j) == result.charAt(j)){
+            for(int j=1;j<result.length();j++){
+                if(result.charAt(j) == result.charAt(j-1)){
                     count++;
                 }else{
                     sb.append(count);

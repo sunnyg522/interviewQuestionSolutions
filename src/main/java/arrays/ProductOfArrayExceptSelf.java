@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class ProductOfArrayExceptSelf {
     public static void main(String[] args) {
-        int[] input = {1,2,3,4};
+        int[] input = {0,0};
         System.out.println(Arrays.toString(productOfArrayexcSelf(input)));
     }
     public static int[] productOfArrayexcSelf(int[] a){

@@ -10,25 +10,38 @@ import java.util.List;
 public class FindAllAnagramsInAString_438 {
     public static List<Integer> list = new ArrayList<>();
     public static void main(String[] args) {
-        System.out.println(getAnaGrameList("abab", "ab"));
+        System.out.println(getAnaGrameList("aa", "bb"));
     }
     public static List<Integer> getAnaGrameList(String a,String b){
         int diff = a.length()-b.length();
         int anLenght = b.length();
         for(int i =0;i<=diff;i++){
-            if(isAnagram(a.substring(i,i+anLenght),b))
+            System.out.println(a.substring(i, i+anLenght));
+            if(isAnagram(a.substring(i,i+anLenght),b)) {
+                System.out.println(isAnagram(a.substring(i,i+anLenght),b));
                 list.add(i);
+            }
         }
         return list;
     }
-    public static boolean isAnagram(String a, String b){
-        if(a.length() != b.length())
+    public static boolean isAnagram(String s1, String s2){
+        if(s1.length()!= s2.length())
             return false;
-        int out = 0;
-        for(int i=0;i<a.length();i++){
-            out = out ^ (a.charAt(i)^b.charAt(i));
+        int[] temp = new int[256];
+        int i = 0;
+        while (i < s1.length()){
+            temp[s1.charAt(i)]++;
+            temp[s2.charAt(i)]--;
+            i++;
         }
-        return out==0?true: false;
+        for(int t : temp){
+            if(t!=0 )
+                return false;
+        }
+
+        return true;
     }
+
+
 
 }
