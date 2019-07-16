@@ -11,25 +11,19 @@ public class ProductOfArrayExceptSelf {
         int[] input = {0,0};
         System.out.println(Arrays.toString(productOfArrayexcSelf(input)));
     }
-    public static int[] productOfArrayexcSelf(int[] a){
-        boolean is0InArray = false;
-        int totalProduct = 1;
-        int[] outPutArray = new int[a.length];
-        for(int i=0; i<a.length; i++){
-            if (a[i] != 0)
-                totalProduct = totalProduct*a[i];
-            else
-                is0InArray = true;
-        }
+    public static int[] productOfArrayexcSelf(int[] nums){
+        int length = nums.length;
+        int[] answer = new int[nums.length];
 
-        for(int i=0; i<a.length; i++){
-            if(a[i] == 0)
-                outPutArray[i] = totalProduct;
-            else if(!is0InArray)
-                outPutArray[i] = totalProduct/a[i];
-            else
-                outPutArray[i] = 0;
+        answer[1] = 1;
+        for(int i=1; i<length;i++){
+            answer[i] = answer[i-1]*nums[i-1];
         }
-        return outPutArray;
+        int R = 1;
+        for(int i=length -1; i>0;i--){
+            answer[i] = answer[i]* R;
+            R *=nums[i];
+        }
+        return  answer;
     }
 }
